@@ -35,8 +35,8 @@ export default function Nav(){
                     <li className={styles.nav__listItem}>
                         Homework
                         <ul className={styles.nav__listItemDrop}>
-                            <li><Link href="/shop/hats">3月24</Link></li>
-                            <li><Link href="/shop/jackets">5月5</Link></li>
+                            <li><Link href="/">3月24</Link></li>
+                            <li><Link href="/">5月5</Link></li>
                         </ul>
                     </li>
 

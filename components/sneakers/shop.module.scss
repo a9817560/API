@@ -146,7 +146,7 @@ $merriweather: "Merriweather", sans-serif;
 }
 
 .paginationDisabled a {
-  color: #232323;
+  color: gray;
   background-color: #4e958b;
 }
 
@@ -174,7 +174,8 @@ article.card {
     }
   }
   .infos {
-    height: 200px;
+    // @include size(auto, $card-height);
+    height: 350px;
     width: 350px;
     position: relative;
     padding: 14px 24px;
