@@ -1,242 +1,353 @@
-/*   color variables */
-$clr-primary: #d6371b;
-$clr-primary-hover: #d42a1e;
-$clr-primary-dark: #e78b13;
-$clr-gray100: #113277;
-$clr-gray150: #ece8e5;
-$clr-gray200: #ece8e5;
-$clr-gray300: #ece8e5;
-$clr-gray400: #909090;
-$clr-gray500: #5a5a5a;
-$clr-gray600: #3a3a3a;
-$clr-gray700: #242424;
+/*--------------------------------------------------------------
+# Header
+--------------------------------------------------------------*/
 
-/*   border radius */
-$radius: 0.2rem;
+// .top-head-btn {
+//   background: #232323;
+//   padding: 9px 26px;
+// }
 
-/* max-width */
-$max-width: 100rem;
+@media (max-width: 991px) {
+  #mobile-nav-toggle {
+    i {
+      color: #232323 !important;
+    }
+  }
+}
 
-/* animation-curve */
-$animation-curve: cubic-bezier(1, 0, 0, 1);
+.main_menu {
+  @media (max-width: 991px) {
+    height: 50px;
+    line-height: 50px;
+  }
+  @media (max-width: 768px) {
+    height: 30px;
+    line-height: 30px;
+  }
+}
 
-.navContainer {
-  &__checkBtn {
-    position: fixed;
-    top: 5rem;
-    right: 3rem;
-    display: none;
-    float: right;
-    width: 5rem;
-    height: 0.8rem;
-    background-color: $clr-gray400;
-    z-index: 100;
-    cursor: pointer;
-
-    &::before,
-    &::after {
-      content: "";
-      width: 5rem;
-      height: 0.8rem;
-      background-color: $clr-gray400;
-      position: absolute;
+#header {
+  transition: all 0.5s;
+  z-index: 997;
+  background: rgb(233, 229, 229);
+  display: flex;
+  hr {
+    margin: 0;
+    background: rgba(173, 156, 156, 0.54);
+    @media (max-width: 991px) {
       display: none;
-      transition: all 0.6s $animation-curve;
-    }
-
-    &::before {
-      top: -200%;
-      left: 0%;
-      transform: rotateZ(0deg);
-      transform-origin: left top;
-    }
-
-    &::after {
-      bottom: -200%;
-      left: 0%;
-      transform: rotateZ(0deg);
-      transform-origin: left bottom;
     }
   }
+}
+.row {
+  color: rgb(61, 85, 226);
+  background-color: rgb(228, 197, 21);
+  display: flex;
+  height: 5rem;
+  font-size: 35px;
+  align-items: center;
+  justify-content: space-around;
+  flex-wrap: wrap;
+}
 
-  #check {
+// row align-items-center justify-content-between d-flex">
+// 				<div id={styles.logo}>
+
+#header.header_scrolled {
+  position: fixed;
+  left: 0;
+  top: 0;
+  right: 0;
+  transition: all 0.5s;
+  box-shadow: -21.213px 21.213px 30px 0px rgba(158, 158, 158, 0.3);
+}
+
+@media (max-width: 673px) {
+  #logo {
+    margin-left: 20px;
+  }
+}
+
+#header #logo h1 {
+  font-size: 34px;
+  margin: 0;
+  padding: 0;
+  line-height: 1;
+  font-weight: 700;
+  letter-spacing: 3px;
+}
+
+#header #logo h1 a,
+#header #logo h1 a:hover {
+  color: #000;
+  padding-left: 10px;
+  border-left: 4px solid #232323;
+}
+
+#header #logo img {
+  padding: 0;
+  margin: 0;
+}
+
+@media (max-width: 768px) {
+  #header #logo h1 {
+    font-size: 28px;
+  }
+  #header #logo img {
+    max-height: 40px;
+  }
+}
+
+/*--------------------------------------------------------------
+# Navigation Menu
+--------------------------------------------------------------*/
+
+/* Nav Menu Essentials */
+
+.nav_menu,
+.nav_menu * {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.nav_menu ul {
+  position: absolute;
+  display: none;
+  top: 100%;
+  right: 0;
+  z-index: 99;
+}
+
+.nav_menu li {
+  position: relative;
+  white-space: nowrap;
+}
+
+.nav_menu > li {
+  float: left;
+}
+
+.nav_menu li:hover > ul,
+.nav_menu li.sfHover > ul {
+  display: block;
+}
+
+.nav_menu ul ul {
+  top: 0;
+  right: 100%;
+}
+
+.nav_menu ul li {
+  margin: 1rem;
+}
+
+/* Nav Menu Arrows */
+
+.sf-arrows .sf-with-ul {
+  padding-right: 30px;
+}
+
+.sf-arrows .sf-with-ul:after {
+  content: "\f107";
+  position: absolute;
+  right: 15px;
+  font-family: FontAwesome;
+  font-style: normal;
+  font-weight: normal;
+}
+
+.sf-arrows ul .sf-with-ul:after {
+  content: "\f105";
+}
+
+/* Nav Meu Container */
+// #nav_menu_container {
+//   font-size: 20px;
+// }
+@media (max-width: 768px) {
+  #nav_menu_container {
     display: none;
   }
+}
 
-  .nav {
-    position: fixed;
-    width: 100vw;
-    box-shadow: 0 0 10px $clr-gray300;
-    background: $clr-gray100;
-    font-size: 1.2rem;
-    z-index: 10;
+/* Nav Meu Styling */
 
-    &__list {
-      max-width: 80%;
-      padding: 0 2rem;
-      display: flex;
-      justify-content: flex-end;
-      align-items: center;
-      gap: 3rem;
-      margin: auto;
-
-      &Logo {
-        list-style: none;
-        margin-right: auto;
-        cursor: pointer;
-        margin-left: 1.2rem;
-
-        svg {
-          padding: 1rem 0 1rem 0;
-          width: 3rem;
-          // svg不可有預設的fill
-          fill: $clr-gray700;
-          transition: fill 250ms $animation-curve;
-
-          &:hover,
-          &:focus {
-            fill: $clr-primary-hover;
-          }
-        }
-      }
-
-      &Item {
-        list-style: none;
-        font-weight: bold;
-        position: relative;
-        padding: 1.5rem 1rem;
-        cursor: pointer;
-        font-size: 1.3rem;
-
-        // 產生選單物件底線
-        &::after {
-          content: "";
-          width: 0;
-          height: 0.3rem;
-          border-radius: $radius;
-          position: absolute;
-          left: 1rem;
-          bottom: 0.8rem;
-          background-color: $clr-primary-hover;
-          transition: width 300ms $animation-curve;
-        }
-
-        &:hover::after,
-        &:focus::after {
-          width: 80%;
-        }
-
-        // 滑鼠移過顯示下拉式選單
-        &:hover ul,
-        &:focus ul {
-          opacity: 1;
-          visibility: visible;
-        }
-
-        &Drop {
-          position: absolute;
-          top: 4rem;
-          left: -1rem;
-          box-shadow: 0 0 10px $clr-gray300;
-          background-color: rgb(243, 228, 20);
-          border-radius: $radius;
-          width: 18rem;
-          padding: 1rem;
-          display: flex;
-          flex-direction: column;
-          gap: 0.5rem;
-          // 隱藏下拉式選單
-          opacity: 0;
-          visibility: hidden;
-          transition: opacity 300ms $animation-curve;
-
-          li {
-            list-style: none;
-            padding: 0.5rem 1rem;
-            border-radius: $radius;
-            transition: background-color 300ms $animation-curve;
-            font-weight: 600;
-
-            &:hover,
-            &:focus {
-              background-color: $clr-primary-hover;
-            }
-          }
-        }
-      }
-    }
+.nav_menu {
+  a {
+    // padding: 38.5px 8px;
+    text-decoration: none;
+    display: inline-block;
+    color: #232323;
+    font-weight: 500;
+    font-size: 12px;
+    text-transform: uppercase;
+    outline: none;
   }
+}
 
-  @media screen and (max-width: 440px) {
-    &__checkBtn {
-      display: block;
+.nav_menu li:hover > a,
+.nav_menu > .menu_active > a {
+  color: #232323;
+}
 
-      &::before,
-      &::after {
-        display: block;
-      }
-    }
+.nav_menu > li {
+  margin-left: 20px;
+}
 
-    #check:checked ~ &__checkBtn::before {
-      content: "";
-      transform: rotateZ(45deg);
-      left: 10%;
-    }
+.nav_menu ul {
+  padding: 10px;
+  box-shadow: 0px 6px 16px rgba(127, 137, 161, 0.25);
+  background: rgb(240, 235, 235);
+}
 
-    #check:checked ~ &__checkBtn::after {
-      content: "";
-      transform: rotateZ(-45deg);
-      left: 10%;
-    }
+.nav_menu ul li {
+  transition: 0.3s;
+}
 
-    #check:checked ~ &__checkBtn {
-      background-color: $clr-gray100;
-    }
+.nav_menu ul li a {
+  // padding: 5px 10px;
+  color: #333;
+  transition: 0.3s;
+  display: block;
+  font-size: 12px;
+  text-transform: none;
+}
 
-    #check ~ &__checkBtn {
-      transition: all 0.5s $animation-curve;
-    }
+.nav_menu ul li:hover > a {
+  color: #232323;
+}
 
-    #check:checked ~ .nav {
-      right: 0;
-    }
+.nav_menu ul ul {
+  margin-right: 10px;
+  margin-top: 0;
+}
 
-    .nav {
-      width: 40%;
-      right: -40%;
-      height: 100vh;
-      transition: right 500ms $animation-curve;
+/* Mobile Nav Toggle */
 
-      &__list {
-        width: 100%;
-        height: 100%;
-        flex-direction: column;
-        align-items: center;
-        gap: 1rem;
-
-        &Logo {
-          margin: 20rem auto 0 auto;
-
-          svg {
-            margin: auto;
-            width: 4rem;
-          }
-        }
-
-        &Item {
-          padding: 1rem 1rem;
-
-          &Drop {
-            z-index: 1000;
-            align-items: flex-end;
-            left: -10rem;
-          }
-        }
-
-        &Item:last-child {
-          margin-bottom: 10rem;
-        }
-      }
-    }
+#mobile-nav-toggle {
+  position: fixed;
+  right: 15px;
+  z-index: 999;
+  top: 28px;
+  border: 0;
+  background: none;
+  font-size: 24px;
+  display: none;
+  transition: all 0.4s;
+  outline: none;
+  cursor: pointer;
+  @media (max-width: 991px) {
+    top: 36px;
   }
+  @media (max-width: 991px) {
+    top: 28px;
+  }
+}
+
+#mobile-nav-toggle i {
+  color: rgb(224, 215, 215);
+  font-weight: 900;
+}
+
+@media (max-width: 960px) {
+  #mobile-nav-toggle {
+    display: inline;
+  }
+  #nav_menu_container {
+    display: none;
+  }
+}
+
+/* Mobile Nav Styling */
+
+#mobile_nav {
+  position: fixed;
+  top: 0;
+  padding-top: 18px;
+  bottom: 0;
+  z-index: 998;
+  background: rgba(0, 0, 0, 0.8);
+  left: -260px;
+  width: 260px;
+  overflow-y: auto;
+  transition: 0.4s;
+}
+
+#mobile-nav ul {
+  padding: 0;
+  margin: 0;
+  list-style: none;
+}
+
+#mobile-nav ul li {
+  position: relative;
+}
+
+#mobile-nav ul li a {
+  color: rgb(228, 220, 220);
+  font-size: 13px;
+  text-transform: uppercase;
+  overflow: hidden;
+  padding: 10px 22px 10px 15px;
+  position: relative;
+  text-decoration: none;
+  width: 100%;
+  display: block;
+  outline: none;
+  font-weight: 700;
+}
+
+#mobile-nav ul li a:hover {
+  color: rgb(228, 218, 218);
+}
+
+#mobile-nav ul li li {
+  padding-left: 30px;
+}
+
+#mobile-nav ul .menu_has_children i {
+  position: absolute;
+  right: 0;
+  z-index: 99;
+  padding: 15px;
+  cursor: pointer;
+  color: rgb(226, 215, 215);
+}
+
+#mobile-nav ul .menu_has_children i.fa-chevron-up {
+  color: #232323;
+}
+
+#mobile-nav ul .menu_has_children li a {
+  text-transform: none;
+}
+
+#mobile-nav ul .menu_item_active {
+  color: #232323;
+}
+
+#mobile-body-overly {
+  width: 100%;
+  height: 100%;
+  z-index: 997;
+  top: 0;
+  left: 0;
+  position: fixed;
+  background: rgba(0, 0, 0, 0.7);
+  display: none;
+}
+
+/* Mobile Nav body classes */
+
+body.mobile-nav-active {
+  overflow: hidden;
+}
+
+body.mobile-nav-active #mobile-nav {
+  left: 0;
+}
+
+body.mobile-nav-active #mobile-nav-toggle {
+  color: rgb(228, 218, 218);
 }
